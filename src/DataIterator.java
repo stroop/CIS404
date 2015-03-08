@@ -204,16 +204,15 @@ public class DataIterator extends JFrame {
             // set cursor back to beginning of result set
             rs.beforeFirst();
 
-
             // While loop through all records from query
             for (int i = 0; rs.next(); i++) {
 
                 // For each record, get assign the field data to String variables
-                String name = rs.getString(3) + " " + rs.getString(2);
-                String address = rs.getString(4);
-                String city = rs.getString(5);
-                String state = rs.getString(6);
-                String zip = rs.getString(7);
+                String name = rs.getString("FIRSTNAME") + " " + rs.getString("LASTNAME");
+                String address = rs.getString("STREET");
+                String city = rs.getString("CITY");
+                String state = rs.getString("STATE");
+                String zip = rs.getString("ZIP");
 
                 // Create new DataClass object using variables from record and add to array
                 DataClassArray[i] = new DataClass(name, address, city, state, zip);
@@ -223,12 +222,14 @@ public class DataIterator extends JFrame {
             // Close connection
             stmt.close();
             conn.close();
-        } catch (Exception ex) {
+        }
+
+        catch (Exception e) {
 
             // Using method from example to print stack trace to dialog if exception is thrown
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
-            ex.printStackTrace(pw);
+            e.printStackTrace(pw);
             JOptionPane.showConfirmDialog(null, sw.toString(), "Error", JOptionPane.ERROR_MESSAGE);
 
         }
@@ -282,5 +283,4 @@ public class DataIterator extends JFrame {
             }
         });
     }
-
 }
