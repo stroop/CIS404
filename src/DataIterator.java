@@ -5,6 +5,8 @@
   CIS 404 - Assignment 2.2
   March 2, 2015
 
+  HERE IS A CHANGE
+
   Application displays a GUI with address information,
   which is obtained from an outside data source.
   Demonstrates the use of a database connection to
